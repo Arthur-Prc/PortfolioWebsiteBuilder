@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #333;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Profile Generator</h2>
+        <form id="profileForm">
+            <label>Profile Image URL:</label>
+            <input type="text" id="profileImage" required>
+            
+            <label>Name:</label>
+            <input type="text" id="name" required>
+            
+            <label>Title:</label>
+            <input type="text" id="title" required>
+            
+            <label>Description:</label>
+            <textarea id="description" required></textarea>
+            
+            <label>Portfolio Image 1:</label>
+            <input type="text" id="portfolioImage1" required>
+            <label>Portfolio Description 1:</label>
+            <input type="text" id="portfolioDesc1" required>
+            
+            <label>Portfolio Image 2:</label>
+            <input type="text" id="portfolioImage2" required>
+            <label>Portfolio Description 2:</label>
+            <input type="text" id="portfolioDesc2" required>
+            
+            <label>Portfolio Image 3:</label>
+            <input type="text" id="portfolioImage3" required>
+            <label>Portfolio Description 3:</label>
+            <input type="text" id="portfolioDesc3" required>
+            
+            <label>Experience:</label>
+            <textarea id="experience" required></textarea>
+            
+            <label>Education:</label>
+            <textarea id="education" required></textarea>
+            
+            <label>Pricing Table (e.g., "Free, $500, $1800"):</label>
+            <input type="text" id="pricing" required>
+            
+            <label>Payment Gateway Code:</label>
+            <textarea id="paymentGateway" required></textarea>
+            
+            <button type="button" onclick="generateProfile()">Generate Profile</button>
+        </form>
+    </div>
+    
+    <script>
+        function generateProfile() {
+            const profileData = {
+                profileImage: document.getElementById('profileImage').value,
+                name: document.getElementById('name').value,
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                portfolio: [
+                    { img: document.getElementById('portfolioImage1').value, desc: document.getElementById('portfolioDesc1').value },
+                    { img: document.getElementById('portfolioImage2').value, desc: document.getElementById('portfolioDesc2').value },
+                    { img: document.getElementById('portfolioImage3').value, desc: document.getElementById('portfolioDesc3').value }
+                ],
+                experience: document.getElementById('experience').value,
+                education: document.getElementById('education').value,
+                pricing: document.getElementById('pricing').value.split(","),
+                paymentGateway: document.getElementById('paymentGateway').value
+            };
+            
+            const blob = new Blob([JSON.stringify(profileData, null, 2)], { type: 'application/json' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = "profile_data.json";
+            link.click();
+        }
+    </script>
+</body>
+</html>

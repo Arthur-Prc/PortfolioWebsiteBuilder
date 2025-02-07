@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Card Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #333;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .profile {
+            width: 150px;
+            border-radius: 50%;
+        }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .item img {
+            width: 100px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .pricing .plan {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #888;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        .whatsapp, .linkedin {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: green;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background: #444;
+            padding: 20px;
+            margin: 15% auto;
+            width: 50%;
+            border-radius: 10px;
+        }
+        .close {
+            cursor: pointer;
+            float: right;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="profile.jpg" alt="Profile Image" class="profile">
+            <h1>Your Name</h1>
+            <p>Business Process Automation Developer | Web3 Enthusiast</p>
+        </header>
+        
+        <section class="portfolio">
+            <h2>Portfolio</h2>
+            <div class="grid">
+                <div class="item" onclick="openModal('Project 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')">
+                    <img src="thumb1.jpg" alt="Project 1">
+                </div>
+                <div class="item" onclick="openModal('Project 2', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')">
+                    <img src="thumb2.jpg" alt="Project 2">
+                </div>
+                <div class="item" onclick="openModal('Project 3', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.')">
+                    <img src="thumb3.jpg" alt="Project 3">
+                </div>
+                <div class="item" onclick="openModal('Project 4', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.')">
+                    <img src="thumb4.jpg" alt="Project 4">
+                </div>
+                <div class="item" onclick="openModal('Project 5', 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.')">
+                    <img src="thumb5.jpg" alt="Project 5">
+                </div>
+                <div class="item" onclick="openModal('Project 6', 'Mollit anim id est laborum. Curabitur pretium tincidunt lacus.')">
+                    <img src="thumb6.jpg" alt="Project 6">
+                </div>
+            </div>
+        </section>
+
+        <section class="experience">
+            <h2>Experience</h2>
+            <ul>
+                <li>Company A - Job Title</li>
+                <li>Company B - Job Title</li>
+            </ul>
+        </section>
+
+        <section class="education">
+            <h2>Education</h2>
+            <p>University Name - Degree</p>
+        </section>
+
+        <section class="pricing">
+            <h2>Pricing</h2>
+            <div class="grid">
+                <div class="plan">Free Consulting</div>
+                <div class="plan">10 Hours - $500</div>
+                <div class="plan">40 Hours - $1800</div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin"></i></a>
+    </footer>
+    
+    <a href="https://wa.me/yourwhatsapp" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()"><i class="fas fa-times"></i></span>
+            <h3 id="modal-title"></h3>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(title, description) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-text').innerText = description;
+            document.getElementById('modal').style.display = 'block';
+        }
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
